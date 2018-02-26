@@ -1,5 +1,5 @@
 public class Game{
-
+    // kort kommentar tilføjet for at teste at versionstyring virker - Valentin
    //lav objekt - snake
    Animal snake = new Animal("Snake", "Waahaahaa I'm going to eat you!", 10, 10);
    //ny kommentar - johan
