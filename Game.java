@@ -2,6 +2,7 @@ public class Game{
 
    //lav objekt - snake
    Animal snake = new Animal("Snake", "Waahaahaa I'm going to eat you!", 10, 10);
+   //ny kommentar - johan
    
    //lav objekt - rabbit
    Animal rabbit = new Animal("Rabbit", "Oh no, please don't eat me!", 1, 1);
