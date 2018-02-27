@@ -1,36 +1,68 @@
 public class Game{
-    // kort kommentar tilføjet for at teste at versionstyring virker - Valentin
-   //lav objekt - snake
-   Animal snake = new Animal("Snake", "Waahaahaa I'm going to eat you!", 10, 10);
-   //ny kommentar - johan
-   
-   //lav objekt - rabbit
-   Animal rabbit = new Animal("Rabbit", "Oh no, please don't eat me!", 1, 1);
-   
-   private int hasLost = 0;
-       
+
+
+   Animal snake = new Animal("evil snake", "Waahaahaa I'm going to eat you!", 7, 7);
+   Animal rabbit = new Animal("nice rabbit", "Oh no, please don't eat me!", 1, 1);
+
 
    public static void main(String[] args){
-          Game game = new Game();
-          game.playTurn();
 
+   Game game = new Game();
+   game.playTurn();
+   game.endGame();
+   } 
+ 
+
+   public void endGame(){
+   System.out.println("Nice rabbit: " + rabbit.getSound() + "\n");
+   System.out.println("Evil snake: " + snake.getSound() + "\n");
+   snake.setX(rabbit.getX());
+   snake.setY(rabbit.getY());
+   snake.tell2();
+   System.out.println("");
+   System.out.println("Game: The snake eats the rabbit.");
    }
-   
-   public void checkOverlap(){
-         if(snake.getX() == rabbit.getX() && snake.getY() == rabbit.getY()){
-         System.out.println("The snake eats the rabbit.");
-   }
-}
-   
+
+ 
    public void playTurn(){
-         int rabbitX = rabbit.getX();
-         rabbit.setX(rabbitX + 1);
-         rabbit.tell();
-         //snake moves toward rabbit
-         snake.tell();
-         //check adjacency                 
-         checkOverlap();
-         playTurn();
-   }
+   
+      rabbit.tell();
+      snake.tell();
+
+      rabbit.setX(rabbit.getX() +1);
+      
+      if (rabbit.getX() > snake.getX()){
+      snake.setX(snake.getX() + 1);
+      }
+      
+      if (rabbit.getY() > snake.getY()){
+      snake.setY(snake.getY() + 1);
+      }
+      
+      if (rabbit.getY() < snake.getY()){
+      snake.setY(snake.getY() - 1);
+      }
+      
+      if (rabbit.getX() < snake.getX()){
+      snake.setX(snake.getX() - 1);
+      }
+      System.out.println("");
+      
+      if (rabbit.getY() != snake.getY()-1 && rabbit.getX() != snake.getX()-1){
+
+      playTurn();
+
+      }
+      else{
+      rabbit.tell();
+      snake.tell();
+      
+      System.out.println("");
+      
+      }
+      
+      } 
+      
    
 }
+
